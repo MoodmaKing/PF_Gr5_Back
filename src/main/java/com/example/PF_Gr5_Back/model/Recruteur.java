@@ -65,6 +65,16 @@ public class Recruteur {
 	}
 
 
+	public Collection<Annonce> getListeAnnonces() {
+		return listeAnnonces;
+	}
+
+
+	public void setListeAnnonces(Collection<Annonce> listeAnnonces) {
+		this.listeAnnonces = listeAnnonces;
+	}
+
+
 	public String getLogo() {
 		return logo;
 	}
