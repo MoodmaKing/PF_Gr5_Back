@@ -1,24 +1,12 @@
 package com.example.PF_Gr5_Back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Version;
+import java.util.*;
+
+import javax.persistence.*;
 
 @Entity
 public class Candidat {
-	
-/*
--	Id
--	nom
--	prenom
--	MDP
--	mail
--	profession
--	anneesXP
--	departement
--	age
 
- */
 	@Id
 	private int id;
 	private String nom;
@@ -27,25 +15,20 @@ public class Candidat {
 	private String mail;
 	private String profession;
 	private int anneesXP;
-	private int dpt;
+	
+	@ManyToOne
+	@JoinColumn(name = "DEPARTEMENT_ID")
+	private Departement departement;
+	
 	private int age;
+	
+	@ManyToMany(mappedBy="listeCandidats")
+	private Collection<Annonce> listeAnnonces;
+	
 	@Version
 	private int version;
 
 	public Candidat() {
-	}
-
-	public Candidat(int id, String nom, String prenom, String mdp, String mail, String profession, int anneesXP,
-			int dpt, int age) {
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.mdp = mdp;
-		this.mail = mail;
-		this.profession = profession;
-		this.anneesXP = anneesXP;
-		this.dpt = dpt;
-		this.age = age;
 	}
 
 	public int getId() {
@@ -104,12 +87,13 @@ public class Candidat {
 		this.anneesXP = anneesXP;
 	}
 
-	public int getDpt() {
-		return dpt;
+	
+	public Departement getDepartement() {
+		return departement;
 	}
 
-	public void setDpt(int dpt) {
-		this.dpt = dpt;
+	public void setDepartement(Departement dpt) {
+		this.departement = dpt;
 	}
 
 	public int getAge() {
@@ -118,6 +102,14 @@ public class Candidat {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	public Collection<Annonce> getListeAnnonce() {
+		return listeAnnonces;
+	}
+
+	public void setListeAnnonce(Collection<Annonce> listeAnnonce) {
+		this.listeAnnonces = listeAnnonce;
 	}
 
 	public int getVersion() {
@@ -131,12 +123,8 @@ public class Candidat {
 	@Override
 	public String toString() {
 		return "Candidat [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mdp=" + mdp + ", mail=" + mail
-				+ ", profession=" + profession + ", anneesXP=" + anneesXP + ", dpt=" + dpt + ", age=" + age
-				+ ", version=" + version + "]";
+				+ ", profession=" + profession + ", anneesXP=" + anneesXP + ", dpt=" + departement + ", age=" + age + "]";
 	}
-	
-	
-	
 	
 }
 

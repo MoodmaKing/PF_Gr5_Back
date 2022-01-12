@@ -1,8 +1,8 @@
 package com.example.PF_Gr5_Back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Version;
+import java.util.*;
+
+import javax.persistence.*;
 
 @Entity
 public class Recruteur {
@@ -10,11 +10,20 @@ public class Recruteur {
 	@Id
 	private int id;
 	private String nom_Entreprise;
+	private String logo;
 	private String login;
 	private String mdp;
-	private String localisation;
+	private String nom;
+	private String prenom;
+	private String mail;
 	
-	private String contact;
+	@ManyToOne
+	@JoinColumn(name = "DEPARTEMENT_ID")
+	private Departement departement;
+	
+	@OneToMany(mappedBy="recruteur")
+	private Collection<Annonce> listeAnnonces;
+	
 	@Version
 	private int version;
 	
@@ -23,14 +32,16 @@ public class Recruteur {
 	}
 
 
-	public Recruteur(int id, String nom_Entreprise, String login, String mdp, String localisation, String contact) {
-		super();
+	public Recruteur(int id, String nom_Entreprise, String logo, String login, String mdp, String nom, String prenom,
+			String mail) {
 		this.id = id;
 		this.nom_Entreprise = nom_Entreprise;
+		this.logo = logo;
 		this.login = login;
 		this.mdp = mdp;
-		this.localisation = localisation;
-		this.contact = contact;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
 	}
 
 
@@ -54,6 +65,16 @@ public class Recruteur {
 	}
 
 
+	public String getLogo() {
+		return logo;
+	}
+
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+
 	public String getLogin() {
 		return login;
 	}
@@ -74,23 +95,53 @@ public class Recruteur {
 	}
 
 
-	public String getLocalisation() {
-		return localisation;
+	public String getNom() {
+		return nom;
 	}
 
 
-	public void setLocalisation(String localisation) {
-		this.localisation = localisation;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 
-	public String getContact() {
-		return contact;
+	public String getPrenom() {
+		return prenom;
 	}
 
 
-	public void setContact(String contact) {
-		this.contact = contact;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+	public String getMail() {
+		return mail;
+	}
+
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	
+	public Departement getDepartement() {
+		return departement;
+	}
+
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	
+	public Collection<Annonce> getListeAnnonce() {
+		return listeAnnonces;
+	}
+
+
+	public void setListeAnnonce(Collection<Annonce> listeAnnonce) {
+		this.listeAnnonces = listeAnnonce;
 	}
 
 
@@ -106,8 +157,9 @@ public class Recruteur {
 
 	@Override
 	public String toString() {
-		return "Recruteur [id=" + id + ", nom_Entreprise=" + nom_Entreprise + ", login=" + login + ", mdp=" + mdp
-				+ ", localisation=" + localisation + ", contact=" + contact + ", version=" + version + "]";
-	}
-	
+		return "Recruteur [id=" + id + ", nom_Entreprise=" + nom_Entreprise + ", logo=" + logo + ", login=" + login
+				+ ", mdp=" + mdp + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", departement="
+				+ departement + "]";
+	}	
+
 }
