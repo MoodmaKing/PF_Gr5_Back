@@ -144,17 +144,6 @@ public class Recruteur {
 		this.departement = departement;
 	}
 
-	
-	public Collection<Annonce> getListeAnnonce() {
-		return listeAnnonces;
-	}
-
-
-	public void setListeAnnonce(Collection<Annonce> listeAnnonce) {
-		this.listeAnnonces = listeAnnonce;
-	}
-
-
 	public int getVersion() {
 		return version;
 	}

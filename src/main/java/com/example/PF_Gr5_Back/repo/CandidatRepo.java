@@ -16,4 +16,5 @@ public interface CandidatRepo extends JpaRepository<Candidat, Integer> {
 	List<Candidat> findByProfession(String profession);
 	//List<Candidat> findByDpt(int dpt);
 	List<Candidat> findByAge(int age);
+	//Candidat findByMailAndMdp(String mail, String mdp);
 }
