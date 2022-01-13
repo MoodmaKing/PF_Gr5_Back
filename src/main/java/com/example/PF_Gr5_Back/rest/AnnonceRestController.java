@@ -27,7 +27,7 @@ public class AnnonceRestController {
 
 //Create
 	
-	//http://localhost:8080/danavalley/consolesrest/annonce
+	//http://localhost:8080/danavalley/api/annonces
 	@PostMapping("/annonces")
 	public String create(@RequestBody Annonce a) {
 		this.repo.save(a);
@@ -35,7 +35,7 @@ public class AnnonceRestController {
 	}
 	
 //Get
-	//http://localhost:8080/danavalley/consolesrest/annonce
+	//http://localhost:8080/danavalley/api/annonces
 	@CrossOrigin
 	@GetMapping("/annonces")
 	public List<Annonce> m1() {
