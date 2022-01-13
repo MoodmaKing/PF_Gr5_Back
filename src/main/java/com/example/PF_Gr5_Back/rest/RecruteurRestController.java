@@ -43,6 +43,12 @@ public class RecruteurRestController {
 
 	}
 	
+	@CrossOrigin
+    @GetMapping("/recruteurs/bymail/{mail}")
+    public Recruteur getByMail(@PathVariable(name = "mail") String mail){
+        return this.repo.findByMail(mail);
+    }
+	
 //	@CrossOrigin
 //	@GetMapping("/recruteurs/{login}/{mdp}")
 //	public Recruteur findByMailAndPass(@PathVariable(name = "login") String login,@PathVariable(name = "mdp") String mdp) {
