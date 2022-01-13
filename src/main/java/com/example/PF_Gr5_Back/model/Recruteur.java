@@ -21,8 +21,8 @@ public class Recruteur {
 	@JoinColumn(name = "DEPARTEMENT_ID")
 	private Departement departement;
 	
-	@OneToMany(mappedBy="recruteur")
-	private Collection<Annonce> listeAnnonces;
+//	@OneToMany(mappedBy="recruteur")
+//	private Collection<Annonce> listeAnnonces;
 	
 	@Version
 	private int version;
@@ -65,14 +65,14 @@ public class Recruteur {
 	}
 
 
-	public Collection<Annonce> getListeAnnonces() {
-		return listeAnnonces;
-	}
-
-
-	public void setListeAnnonces(Collection<Annonce> listeAnnonces) {
-		this.listeAnnonces = listeAnnonces;
-	}
+//	public Collection<Annonce> getListeAnnonces() {
+//		return listeAnnonces;
+//	}
+//
+//
+//	public void setListeAnnonces(Collection<Annonce> listeAnnonces) {
+//		this.listeAnnonces = listeAnnonces;
+//	}
 
 
 	public String getLogo() {
