@@ -75,6 +75,14 @@ public class CandidatRestController {
 		return this.repo.findByProfession(profession);
 	}
 	
+//	@CrossOrigin
+//	@GetMapping("/candidatprof/{mail}/{mdp}")
+//	public Candidat findByMailAndPass(@PathVariable(name = "login") String mail,@PathVariable(name = "mdp") String mdp) {
+//		Candidat c=repo.findByMailAndMdp(mail, mdp);
+//		return c;
+//
+//	}
+	
 	/*
 	//http://localhost:8080/danavalley/candidatrest/candidat
 	@CrossOrigin

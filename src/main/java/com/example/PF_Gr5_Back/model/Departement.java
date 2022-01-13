@@ -10,12 +10,12 @@ public class Departement {
 	private int id;
 	private String nom;
 	
-	@OneToMany(mappedBy="departement")
-	private Collection<Annonce> listeAnnonces;
-	@OneToMany(mappedBy="departement")
-	private Collection<Recruteur> listeRecruteurs;
-	@OneToMany(mappedBy="departement")
-	private Collection<Candidat> listeCandidats;
+//	@OneToMany(mappedBy="departement")
+//	private Collection<Annonce> listeAnnonces;
+//	@OneToMany(mappedBy="departement")
+//	private Collection<Recruteur> listeRecruteurs;
+//	@OneToMany(mappedBy="departement")
+//	private Collection<Candidat> listeCandidats;
 	
 	@Version
 	private int version;
@@ -47,31 +47,31 @@ public class Departement {
 	}
 	
 	
-	public Collection<Annonce> getListeAnnonces() {
-		return listeAnnonces;
-	}
-
-	public void setListeAnnonces(Collection<Annonce> listeAnnonces) {
-		this.listeAnnonces = listeAnnonces;
-	}
-	
-	
-	public Collection<Recruteur> getListeRecruteurs() {
-		return listeRecruteurs;
-	}
-
-	public void setListeRecruteurs(Collection<Recruteur> listeRecruteurs) {
-		this.listeRecruteurs = listeRecruteurs;
-	}
-
-	
-	public Collection<Candidat> getListeCandidats() {
-		return listeCandidats;
-	}
-
-	public void setListeCandidats(Collection<Candidat> listeCandidats) {
-		this.listeCandidats = listeCandidats;
-	}
+//	public Collection<Annonce> getListeAnnonces() {
+//		return listeAnnonces;
+//	}
+//
+//	public void setListeAnnonces(Collection<Annonce> listeAnnonces) {
+//		this.listeAnnonces = listeAnnonces;
+//	}
+//	
+//	
+//	public Collection<Recruteur> getListeRecruteurs() {
+//		return listeRecruteurs;
+//	}
+//
+//	public void setListeRecruteurs(Collection<Recruteur> listeRecruteurs) {
+//		this.listeRecruteurs = listeRecruteurs;
+//	}
+//
+//	
+//	public Collection<Candidat> getListeCandidats() {
+//		return listeCandidats;
+//	}
+//
+//	public void setListeCandidats(Collection<Candidat> listeCandidats) {
+//		this.listeCandidats = listeCandidats;
+//	}
 
 	@Override
 	public String toString() {
