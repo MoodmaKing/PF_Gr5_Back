@@ -19,7 +19,7 @@ import com.example.PF_Gr5_Back.model.Annonce;
 import com.example.PF_Gr5_Back.repo.AnnonceRepo;
 
 @RestController
-@RequestMapping("/consolesrest")
+@RequestMapping("/api")
 public class AnnonceRestController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class AnnonceRestController {
 //Create
 	
 	//http://localhost:8080/danavalley/consolesrest/annonce
-	@PostMapping("/annonce")
+	@PostMapping("/annonces")
 	public String create(@RequestBody Annonce a) {
 		this.repo.save(a);
 		return "annonce créée";
@@ -37,35 +37,35 @@ public class AnnonceRestController {
 //Get
 	//http://localhost:8080/danavalley/consolesrest/annonce
 	@CrossOrigin
-	@GetMapping("/annonce")
+	@GetMapping("/annonces")
 	public List<Annonce> m1() {
 		return this.repo.findAll();
 	}
 	
 	//http://localhost:8080/danavalley/consolesrest/annonce/1
 	@CrossOrigin
-	@GetMapping("/annonce/{id}")
+	@GetMapping("/annonces/{id}")
 	public Annonce m2(@PathVariable(name = "id") int id) {
 		return this.repo.findById(id).get();
 	}
 	
 	//http://localhost:8080/danavalley/consolesrest/annoncetit/aa
 	@CrossOrigin
-	@GetMapping("/annoncetit/{titre}")
+	@GetMapping("/annoncestitre/{titre}")
 	public List<Annonce> m3(@PathVariable(name = "titre") String titre) {
 		return this.repo.findByTitre(titre);
 	}
 	
 	//http://localhost:8080/danavalley/consolesrest/annoncecat/aa
 	@CrossOrigin
-	@GetMapping("/annoncecat/{cat}")
+	@GetMapping("/annoncescat/{cat}")
 	public List<Annonce> m4(@PathVariable(name = "cat") String categorie) {
 		return this.repo.findByCategorie(categorie);
 	}
 
 	//http://localhost:8080/danavalley/consolesrest/annoncecat/aa
 	@CrossOrigin
-	@GetMapping("/annoncedat/{date}")
+	@GetMapping("/annoncesdate/{date}")
 	public List<Annonce> m5(@PathVariable(name = "date") String date) {
 		return this.repo.findByDate(date);
 	}
@@ -74,7 +74,7 @@ public class AnnonceRestController {
 	
 	//http://localhost:8080/danavalley/consolesrest/annonce/6
 	@CrossOrigin
-	@DeleteMapping("/annonce/{id}")
+	@DeleteMapping("/annonces/{id}")
 	public String d3(@PathVariable(name = "id") int id) {
 		Annonce a = this.repo.findById(id).get();
 		this.repo.delete(a);
@@ -85,7 +85,7 @@ public class AnnonceRestController {
 //Update
 	//http://localhost:8080/danavalley/consolesrest/annonce
 	@CrossOrigin
-	@PutMapping("/annonce") 
+	@PutMapping("/annonces") 
 	public String m5(@RequestBody Annonce a) {
 		repo.save(a);
 		return "annonce a jour";

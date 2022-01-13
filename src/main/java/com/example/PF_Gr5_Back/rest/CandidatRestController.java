@@ -17,7 +17,7 @@ import com.example.PF_Gr5_Back.model.Candidat;
 import com.example.PF_Gr5_Back.repo.CandidatRepo;
 
 @RestController
-@RequestMapping("/candidatrest")
+@RequestMapping("/api")
 public class CandidatRestController {
 
 	@Autowired
@@ -26,7 +26,7 @@ public class CandidatRestController {
 //Create
 	
 	//http://localhost:8080/danavalley/candidatrest/candidat
-	@PostMapping("/candidat")
+	@PostMapping("/candidats")
 	public String m3(@RequestBody Candidat c) {
 		repo.save(c);
 		return "candidat créé";
@@ -35,42 +35,42 @@ public class CandidatRestController {
 //Get
 	//http://localhost:8080/danavalley/candidatrest/candidat
 	@CrossOrigin
-	@GetMapping("/candidat")
+	@GetMapping("/candidats")
 	public List<Candidat> m1() {
 		return this.repo.findAll();
 	}
 	
 	//http://localhost:8080/danavalley/candidatrest/candidatid/2
 	@CrossOrigin
-	@GetMapping("/candidatid/{id}")
+	@GetMapping("/candidats/{id}")
 	public Candidat m2(@PathVariable(name = "id") int id) {
 		return this.repo.findById(id).get();
 	}
 	
 	//http://localhost:8080/danavalley/candidatrest/candidatnom/uuu
 	@CrossOrigin
-	@GetMapping("/candidatnom/{nom}")
+	@GetMapping("/candidatsnom/{nom}")
 	public List<Candidat> m3(@PathVariable(name = "nom") String nom) {
 		return this.repo.findByNom(nom);
 	}
 	
 	//http://localhost:8080/danavalley/candidatrest/candidatpre/az
 	@CrossOrigin
-	@GetMapping("/candidatpre/{prenom}")
+	@GetMapping("/candidatsprenom/{prenom}")
 	public List<Candidat> m4(@PathVariable(name = "prenom") String prenom) {
 		return this.repo.findByPrenom(prenom);
 	}
 
 	//http://localhost:8080/danavalley/candidatrest/candidatmail/aad
 	@CrossOrigin
-	@GetMapping("/candidatmail/{mail}")
+	@GetMapping("/candidatsmail/{mail}")
 	public List<Candidat> m5(@PathVariable(name = "mail") String mail) {
 		return this.repo.findByMail(mail);
 	}
 	
 	//http://localhost:8080/danavalley/candidatrest/candidatprof/
 	@CrossOrigin
-	@GetMapping("/candidatprof/{profession}")
+	@GetMapping("/candidatsprof/{profession}")
 	public List<Candidat> m6(@PathVariable(name = "profession") String profession) {
 		return this.repo.findByProfession(profession);
 	}
@@ -94,7 +94,7 @@ public class CandidatRestController {
 	
 	//http://localhost:8080/danavalley/candidatrest/candidatage/55
 	@CrossOrigin
-	@GetMapping("/candidatage/{age}")
+	@GetMapping("/candidatsage/{age}")
 	public List<Candidat> m8(@PathVariable(name = "age") int age) {
 		return this.repo.findByAge(age);
 	}
@@ -106,7 +106,7 @@ public class CandidatRestController {
 	
 	//http://localhost:8080/danavalley/candidatrest/candidat/3
 	@CrossOrigin
-	@DeleteMapping("/candidat/{id}")
+	@DeleteMapping("/candidats/{id}")
 	public void d(@PathVariable(name = "id") Integer id) {
 		Candidat c = this.repo.findById(id).get();
 		this.repo.delete(c);
@@ -117,7 +117,7 @@ public class CandidatRestController {
 	
 	//http://localhost:8080/danavalley/candidatrest/candidat
 	@CrossOrigin
-	@PutMapping("/candidat") 
+	@PutMapping("/candidats") 
 	public String m5(@RequestBody Candidat c) {
 		this.repo.save(c);
 		return "candidat a jour";

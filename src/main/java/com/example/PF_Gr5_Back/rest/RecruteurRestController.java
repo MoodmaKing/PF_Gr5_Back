@@ -17,16 +17,16 @@ import com.example.PF_Gr5_Back.model.Recruteur;
 import com.example.PF_Gr5_Back.repo.RecruteurRepository;
 
 @RestController
-@RequestMapping("/recruteur")
+@RequestMapping("/api")
 public class RecruteurRestController {
 	@Autowired
 	private RecruteurRepository repo;
 	
-	@GetMapping("/hello")
-	public String getHello(){
-		//Sur PostMan : http://localhost:8080/formation/rest/hello
-		return "hello recruteur";
-	}
+//	@GetMapping("/hello")
+//	public String getHello(){
+//		//Sur PostMan : http://localhost:8080/formation/rest/hello
+//		return "hello recruteur";
+//	}
 	
 	//find All recruteurs
 	@CrossOrigin
@@ -42,6 +42,12 @@ public class RecruteurRestController {
 		return this.repo.findById(id).get();
 
 	}
+	
+	@CrossOrigin
+    @GetMapping("/recruteursmail/{mail}")
+    public Recruteur getByMail(@PathVariable(name = "mail") String mail){
+        return this.repo.findByMail(mail);
+    }
 	
 //	@CrossOrigin
 //	@GetMapping("/recruteurs/{login}/{mdp}")
