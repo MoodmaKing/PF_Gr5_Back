@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Recruteur {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String nom_Entreprise;
 	private String logo;

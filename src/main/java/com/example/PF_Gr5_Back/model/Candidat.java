@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class Candidat {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String nom;
 	private String prenom;
