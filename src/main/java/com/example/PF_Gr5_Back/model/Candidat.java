@@ -25,8 +25,13 @@ public class Candidat {
 	
 	private int age;
 	
-	@ManyToMany(mappedBy="listeCandidats")
-	@JsonIgnoreProperties(value = { "listeCandidats" }, allowSetters = true)
+	@ManyToMany
+	@JoinTable(
+		name="annonces_candidats",
+		joinColumns = @JoinColumn(name = "idAnnonce"),
+		inverseJoinColumns = @JoinColumn(name = "idCandidat")
+	)
+//	@JsonIgnoreProperties(value = { "listeCandidats" }, allowSetters = true)
 	private Collection<Annonce> listeAnnonces;
 	
 	@Version
@@ -90,7 +95,6 @@ public class Candidat {
 	public void setAnneesXP(int anneesXP) {
 		this.anneesXP = anneesXP;
 	}
-
 	
 	public Departement getDepartement() {
 		return departement;
@@ -127,7 +131,7 @@ public class Candidat {
 	@Override
 	public String toString() {
 		return "Candidat [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mdp=" + mdp + ", mail=" + mail
-				+ ", profession=" + profession + ", anneesXP=" + anneesXP + ", dpt=" + departement + ", age=" + age + "]";
+				+ ", profession=" + profession + ", anneesXP=" + anneesXP + ", dpt=" + departement + ", age=" + age + ", liste annonces=" + listeAnnonces + "]";
 	}
 	
 }

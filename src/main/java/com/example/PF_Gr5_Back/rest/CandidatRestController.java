@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.PF_Gr5_Back.model.Annonce;
 import com.example.PF_Gr5_Back.model.Candidat;
+import com.example.PF_Gr5_Back.repo.AnnonceRepo;
 import com.example.PF_Gr5_Back.repo.CandidatRepo;
 
 @RestController
@@ -28,9 +30,8 @@ public class CandidatRestController {
 	//http://localhost:8080/danavalley/candidatrest/candidat
 	@CrossOrigin
 	@PostMapping("/candidats")
-	public String m3(@RequestBody Candidat c) {
+	public void m3(@RequestBody Candidat c) {
 		repo.save(c);
-		return "candidat créé";
 	}
 	
 //Get
@@ -99,12 +100,8 @@ public class CandidatRestController {
 	public List<Candidat> m8(@PathVariable(name = "age") int age) {
 		return this.repo.findByAge(age);
 	}
-
-	
 	
 //Delete
-	
-	
 	//http://localhost:8080/danavalley/candidatrest/candidat/3
 	@CrossOrigin
 	@DeleteMapping("/candidats/{id}")
@@ -113,17 +110,14 @@ public class CandidatRestController {
 		this.repo.delete(c);
 	}
 	
-	
 //Update
-	
 	//http://localhost:8080/danavalley/candidatrest/candidat
 	@CrossOrigin
-	@PutMapping("/candidats") 
-	public String m5(@RequestBody Candidat c) {
-		this.repo.save(c);
-		return "candidat a jour";
-	}
-	
+	@PostMapping("/candidatures")
+    private void addAnnonceToCandidat(@RequestBody Candidat c) {
+	    
+	    repo.save(c);
+	    
+    }
 }
-
 

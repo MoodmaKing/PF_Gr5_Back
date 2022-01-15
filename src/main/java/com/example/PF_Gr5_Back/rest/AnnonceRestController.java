@@ -76,10 +76,10 @@ public class AnnonceRestController {
 	//http://localhost:8080/danavalley/consolesrest/annonce/6
 	@CrossOrigin
 	@DeleteMapping("/annonces/{id}")
-	public String d3(@PathVariable(name = "id") int id) {
+	public void d3(@PathVariable(name = "id") int id) {
 		Annonce a = this.repo.findById(id).get();
 		this.repo.delete(a);
-		return "annonce suprimée";
+		
 	}
 	
 	

@@ -28,12 +28,7 @@ public class Annonce {
 	private String type_Contrat;
 	private Boolean tele_travail;
 	
-	@ManyToMany
-	@JoinTable(
-		name="annonces_candidats",
-		joinColumns = @JoinColumn(name = "idAnnonce"),
-		inverseJoinColumns = @JoinColumn(name = "idCandidat")
-	)
+	@ManyToMany(mappedBy="listeAnnonces")
 	@JsonIgnoreProperties(value = { "listeAnnonces" }, allowSetters = true)
 	private Collection<Candidat> listeCandidats;
 	
