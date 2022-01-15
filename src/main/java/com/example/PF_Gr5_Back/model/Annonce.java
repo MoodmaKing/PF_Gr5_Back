@@ -1,8 +1,18 @@
 package com.example.PF_Gr5_Back.model;
 
-import java.util.*;
+import java.util.Collection;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Annonce {
@@ -18,17 +28,18 @@ public class Annonce {
 	private String type_Contrat;
 	private Boolean tele_travail;
 	
-	
 	@ManyToMany
 	@JoinTable(
 		name="annonces_candidats",
 		joinColumns = @JoinColumn(name = "idAnnonce"),
 		inverseJoinColumns = @JoinColumn(name = "idCandidat")
 	)
+	@JsonIgnoreProperties(value = { "listeAnnonces" }, allowSetters = true)
 	private Collection<Candidat> listeCandidats;
 	
 	@ManyToOne
 	@JoinColumn(name="RECRUTEUR_ID")
+	@JsonIgnoreProperties(value = { "listeAnnonces" }, allowSetters = true)
 	private Recruteur recruteur;
 	
 	@ManyToOne
@@ -37,8 +48,6 @@ public class Annonce {
 	
 	@Version
 	private int version;
-	
-	
 	
 	public Annonce() {
 	}
@@ -108,12 +117,12 @@ public class Annonce {
 	}
 
 	
-	public Collection<Candidat> getListeCandidat() {
+	public Collection<Candidat> getListeCandidats() {
 		return listeCandidats;
 	}
 
-	public void setListeCandidat(Collection<Candidat> listeCandidat) {
-		this.listeCandidats = listeCandidat;
+	public void setListeCandidats(Collection<Candidat> listeCandidats) {
+		this.listeCandidats = listeCandidats;
 	}
 
 	

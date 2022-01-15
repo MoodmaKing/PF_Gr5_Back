@@ -60,6 +60,7 @@ public class RecruteurRestController {
 	@CrossOrigin
 	@PostMapping("/recruteurs")
 	public void create(@RequestBody Recruteur recruteur) {
+		System.out.println(recruteur);
 		this.repo.save(recruteur);
 	}
 	

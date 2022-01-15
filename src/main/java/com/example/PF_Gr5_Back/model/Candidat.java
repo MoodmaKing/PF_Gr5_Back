@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Candidat {
 
@@ -24,6 +26,7 @@ public class Candidat {
 	private int age;
 	
 	@ManyToMany(mappedBy="listeCandidats")
+	@JsonIgnoreProperties(value = { "listeCandidats" }, allowSetters = true)
 	private Collection<Annonce> listeAnnonces;
 	
 	@Version
@@ -105,12 +108,12 @@ public class Candidat {
 		this.age = age;
 	}
 	
-	public Collection<Annonce> getListeAnnonce() {
+	public Collection<Annonce> getListeAnnonces() {
 		return listeAnnonces;
 	}
 
-	public void setListeAnnonce(Collection<Annonce> listeAnnonce) {
-		this.listeAnnonces = listeAnnonce;
+	public void setListeAnnonces(Collection<Annonce> listeAnnonces) {
+		this.listeAnnonces = listeAnnonces;
 	}
 
 	public int getVersion() {

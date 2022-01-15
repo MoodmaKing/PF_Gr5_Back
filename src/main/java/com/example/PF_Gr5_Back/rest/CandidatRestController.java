@@ -26,6 +26,7 @@ public class CandidatRestController {
 //Create
 	
 	//http://localhost:8080/danavalley/candidatrest/candidat
+	@CrossOrigin
 	@PostMapping("/candidats")
 	public String m3(@RequestBody Candidat c) {
 		repo.save(c);
@@ -64,7 +65,7 @@ public class CandidatRestController {
 	//http://localhost:8080/danavalley/candidatrest/candidatmail/aad
 	@CrossOrigin
 	@GetMapping("/candidatsmail/{mail}")
-	public List<Candidat> m5(@PathVariable(name = "mail") String mail) {
+	public Candidat m5(@PathVariable(name = "mail") String mail) {
 		return this.repo.findByMail(mail);
 	}
 	
