@@ -113,8 +113,8 @@ public class CandidatRestController {
 //Update
 	//http://localhost:8080/danavalley/candidatrest/candidat
 	@CrossOrigin
-	@PostMapping("/candidatures")
-    private void addAnnonceToCandidat(@RequestBody Candidat c) {
+	@PutMapping("/candidats")
+    private void update(@RequestBody Candidat c) {
 	    
 	    repo.save(c);
 	    
