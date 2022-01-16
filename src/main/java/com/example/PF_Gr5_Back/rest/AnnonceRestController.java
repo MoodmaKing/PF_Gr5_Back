@@ -30,9 +30,9 @@ public class AnnonceRestController {
 	//http://localhost:8080/danavalley/api/annonces
 	@CrossOrigin
 	@PostMapping("/annonces")
-	public String create(@RequestBody Annonce a) {
+	public void create(@RequestBody Annonce a) {
 		this.repo.save(a);
-		return "annonce créée";
+		//return "annonce créée";
 	}
 	
 //Get
